@@ -1,0 +1,8 @@
+.errormsg {
+    margin: auto;
+    text-align: center;
+    width: 100%;
+    position: relative;
+    top: 4%;
+    transform: translateY(6%);
+}
