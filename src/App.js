@@ -1,24 +1,45 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import store from "./store";
+import { useEffect } from "react";
+import { getEmployees } from "./action/loademployee";
+import { useSelector } from "react-redux";
+import buildObject from "./utils/builddata";
+import Tabs from "./components/Tabs";
+import ContentContainer from "./components/ContentContainer";
+import ErrorPage from "./pages/Errorpage/ErrorPage";
+
+const users = (state) => ({
+  employees: state.employeeReducer.employees,
+  loading: state.employeeReducer.loading,
+  error: state.employeeReducer.error,
+});
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+  useEffect(() => {
+    store.dispatch(getEmployees());
+  }, []);
+  const { employees, loading, error } = useSelector(users);
+
+  return loading ? (
+    <div className="loading-indicator">
+      <img alt="loading" src="loading.gif" />
     </div>
+  ) : error.status === "404" ? (
+    <ErrorPage msg={error.msg}></ErrorPage>
+  ) : (
+    <Tabs>
+      {buildObject(employees).map((item, i) => (
+        <div key={i} label={item.alphabet} count={item.itemCollection.length}>
+          {item.itemCollection.map((coll, index) => (
+            <ContentContainer
+              key={index}
+              title={`${coll.name.last}, ${coll.name.first}`}
+              props={coll}
+            ></ContentContainer>
+          ))}
+        </div>
+      ))}
+    </Tabs>
   );
 }
 

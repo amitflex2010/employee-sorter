@@ -1,0 +1,40 @@
+.card {
+  background-color: #f5efef;
+    padding: 15px;
+    border-radius: 5px;
+    min-height: 300px;
+    display: grid;
+    grid-template-columns: 1fr 5fr;
+}
+
+.img {
+  border-radius: 50%;
+  position: relative;
+  top: 50%;
+  transform: translateY(50%);
+}
+.cross {
+  margin-top: -5px;
+  cursor: pointer;
+}
+.row {
+  display: block;
+  margin-left: auto;
+  margin-right: 10px;
+
+}
+
+.details-container {
+  flex: 2;
+}
+.h2color {
+  color: lightgray;
+}
+
+.avatar-container {
+  flex-basis: 250px;
+  padding: 10px;
+}
+.boldtext {
+  font-weight: bold;
+}
