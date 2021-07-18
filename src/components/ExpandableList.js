@@ -3,11 +3,10 @@ import Chevron from "./Chevron";
 
 import "./ExpandableList.css";
 
-const ExpandableList = ({ title, isClosed, children }) => {
+const ExpandableList = ({ thumb, title, isClosed, children }) => {
   const [setActive, setActiveState] = useState("");
   const [setHeight, setHeightState] = useState("0px");
   const [setRotate, setRotateState] = useState("expandableList__icon");
-
   const content = useRef(null);
 
   useMemo(() => closeBlock(), [isClosed]);
@@ -36,8 +35,11 @@ const ExpandableList = ({ title, isClosed, children }) => {
         className={`expandableList ${setActive}`}
         onClick={toggleExpandableList}
       >
-        <p className="expandableList__title">{title}</p>
-        <Chevron className={`${setRotate}`} width={10} fill={"#777"} />
+        <div className="container-img">
+          <img alt="avatarImg" className="img1" src={thumb} />
+          <p className="expandableList__title">{title}</p>
+          <Chevron className={`${setRotate}`} width={10} fill={"#777"} />
+        </div>
       </button>
       <div
         ref={content}

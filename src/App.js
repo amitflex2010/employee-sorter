@@ -7,6 +7,7 @@ import buildObject from "./utils/builddata";
 import Tabs from "./components/Tabs";
 import ContentContainer from "./components/ContentContainer";
 import ErrorPage from "./pages/Errorpage/ErrorPage";
+import Config from './config.json'
 
 const users = (state) => ({
   employees: state.employeeReducer.employees,
@@ -15,8 +16,9 @@ const users = (state) => ({
 });
 
 function App() {
+ ;
   useEffect(() => {
-    store.dispatch(getEmployees());
+    store.dispatch(getEmployees(Config.EMPLOYEE_COUNT));
   }, []);
   const { employees, loading, error } = useSelector(users);
 

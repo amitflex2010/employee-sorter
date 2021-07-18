@@ -2,6 +2,11 @@
   display: flex;
   flex-direction: column;
 }
+.container-img {
+  display: flex;
+  width: 100%;
+  line-height: 2.5;
+}
 .expandableList {
   background-color: #eee;
   color: #444;
@@ -11,6 +16,11 @@
   border: none;
   outline: none;
   transition: background-color 0.6s ease;
+}
+.img1 {
+  border-radius: 50%;
+  position: relative;
+  padding: 5px;
 }
 .expandableList:hover,
 .active {
@@ -36,3 +46,4 @@
 .rotate {
   transform: rotate(90deg);
 }
+
