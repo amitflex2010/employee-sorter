@@ -23,4 +23,4 @@ const ContentContainer = ({ title, props }) => {
   );
 };
 
-export default ContentContainer;
+export default React.memo(ContentContainer);

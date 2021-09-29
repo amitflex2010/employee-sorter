@@ -1,2 +1,3 @@
 export const GET_EMPLOYEES = 'GET_EMPLOYEES';
+export const SET_EMPLOYEES = 'SET_EMPLOYEES';
 export const POST_ERROR = 'POST_ERROR';

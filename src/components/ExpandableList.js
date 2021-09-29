@@ -1,4 +1,4 @@
-import React, { useState, useRef, useMemo } from "react";
+import React, { useState, useRef, useMemo, useCallback } from "react";
 import Chevron from "./Chevron";
 
 import "./ExpandableList.css";
@@ -17,7 +17,7 @@ const ExpandableList = ({ thumb, title, isClosed, children }) => {
     setRotateState("expandableList__icon");
   }
 
-  const toggleExpandableList = () => {
+  const toggleExpandableList = useCallback(() => {
     setActiveState(setActive === "" ? "active" : "");
     setHeightState(
       setActive === "active" ? "0px" : `${content.current.scrollHeight}px`
@@ -27,7 +27,7 @@ const ExpandableList = ({ thumb, title, isClosed, children }) => {
         ? "expandableList__icon"
         : "expandableList__icon rotate"
     );
-  };
+  },[setActive]);
 
   return (
     <div className="expandableList__section">

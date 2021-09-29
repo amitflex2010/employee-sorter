@@ -1,4 +1,4 @@
-import { GET_EMPLOYEES, POST_ERROR } from "../types";
+import { SET_EMPLOYEES, POST_ERROR } from "../types";
 
 const initialState = {
   employees: [],
@@ -10,10 +10,10 @@ const employeeReducer = (state = initialState, action) => {
   const { type, payload } = action;
 
   switch (type) {
-    case GET_EMPLOYEES:
+    case SET_EMPLOYEES:
       return {
         ...state,
-        employees: payload,
+        employees: payload.results,
         loading: false,
       };
     case POST_ERROR:

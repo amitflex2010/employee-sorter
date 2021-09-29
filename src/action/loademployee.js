@@ -1,9 +1,22 @@
-import { api } from "../utils/api";
 
-import { GET_EMPLOYEES, POST_ERROR } from "../types";
+
+import { GET_EMPLOYEES, SET_EMPLOYEES, POST_ERROR } from "../types";
 
 // Get posts
-export const getEmployees = (count) => async (dispatch) => {
+export const getEmployees = (count) => ({
+  type: GET_EMPLOYEES,
+  payload: count
+});
+export const setEmployees = (data) => ({
+  type: SET_EMPLOYEES,
+  payload: data,
+});
+
+export const setError = (data) => ({
+  type: POST_ERROR,
+  payload: data,
+});
+/*export const getEmployees = (count) => async (dispatch) => {
   try {
     const res = await api.get(`/api?results=${count}&nat=us`);
     dispatch({
@@ -19,4 +32,4 @@ export const getEmployees = (count) => async (dispatch) => {
       },
     });
   }
-};
+};*/

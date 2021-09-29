@@ -1,13 +1,12 @@
 import "./App.css";
-import store from "./store";
 import { useEffect } from "react";
 import { getEmployees } from "./action/loademployee";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import buildObject from "./utils/builddata";
 import Tabs from "./components/Tabs";
 import ContentContainer from "./components/ContentContainer";
 import ErrorPage from "./pages/Errorpage/ErrorPage";
-import Config from './config.json'
+import Config from "./config.json";
 
 const users = (state) => ({
   employees: state.employeeReducer.employees,
@@ -16,10 +15,10 @@ const users = (state) => ({
 });
 
 function App() {
- ;
+  const dispatch = useDispatch();
   useEffect(() => {
-    store.dispatch(getEmployees(Config.EMPLOYEE_COUNT));
-  }, []);
+    dispatch(getEmployees(Config.EMPLOYEE_COUNT));
+  }, [dispatch]);
   const { employees, loading, error } = useSelector(users);
 
   return loading ? (
@@ -36,8 +35,7 @@ function App() {
             <ContentContainer
               key={index}
               title={`${coll.name.last}, ${coll.name.first}`}
-              props={coll}
-            ></ContentContainer>
+              props={coll}></ContentContainer>
           ))}
         </div>
       ))}
